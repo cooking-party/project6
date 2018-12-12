@@ -12,7 +12,7 @@ class PrintRecipeList extends Component {
       ingredients: [],
       source: '',
       firebaseKey: '',
-      image: ''
+      image: '',
     }
   }
   componentDidUpdate(prevProps) {
@@ -28,7 +28,6 @@ class PrintRecipeList extends Component {
     }, () => {
       axios.get(`https://api.yummly.com/v1/api/recipe/${this.state.recipeid}?_app_id=df8e14a9&_app_key=a3cc287f6d68e263afd8945e586bea51`, {
       }).then((res) => {
-        console.log(res.data);
         const tempIngredientsArray = [];
         tempIngredientsArray.push(...res.data.ingredientLines);
         this.setState({
@@ -47,7 +46,7 @@ class PrintRecipeList extends Component {
       ?
       this.props.recipeList.map((recipe) => {
         return (
-          <div key={recipe.id} class="searchRecipeResult">
+          <div key={recipe.id} className="searchRecipeResult">
             <button className="coolbutton" value={recipe.id} onClick={this.handleClick}>{recipe.recipeName}</button>
           </div>
         )
@@ -60,18 +59,22 @@ class PrintRecipeList extends Component {
     return (
       <div className="printRecipeList">
         <section id="recipe">
-          <PrintSingleRecipe
-            recipeid={this.state.recipeid}
-            recipeName={this.state.recipeName}
-            numberOfServings={this.state.numberOfServings}
-            ingredients={this.state.ingredients}
-            source={this.state.source}
-            firebaseKey={this.props.firebaseKey}
-            image={this.state.image} />
+          {this.props.removeSearchResults === false && (
+            <PrintSingleRecipe
+              recipeid={this.state.recipeid}
+              recipeName={this.state.recipeName}
+              numberOfServings={this.state.numberOfServings}
+              ingredients={this.state.ingredients}
+              source={this.state.source}
+              firebaseKey={this.props.firebaseKey}
+              image={this.state.image} />  
+          )}
         </section>
-      
+  
         <section className="recipe-list">
-          {this.printRecipes()}
+          {this.props.removeSearchResults === false && (
+            this.printRecipes()
+          )}
         </section>
       </div>
 

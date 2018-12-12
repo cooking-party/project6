@@ -9,7 +9,6 @@
     }
 }
 
-
 .BTN__submit--search {
     @include inputSubmit;
     border-radius: 0 6px 6px 0;
@@ -26,9 +25,20 @@
     margin-bottom: 10px;
 }
 
+.toggleSearch {
+    @include linkButton;
+    border: none;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    float: right;
+}
 
 @media (max-width: 715px) {
     .searchForm {
         margin: 20px 0 10px 0;
     }
+    .toggleSearch {
+        margin-top: 10px;
+    }
+
 }

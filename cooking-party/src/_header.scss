@@ -6,7 +6,6 @@
   right: 0;
   z-index: 100;
   padding-bottom: 15px;
-  //matty added:
   box-shadow: 2px 2px 5px rgba(51,51,51,0.2);
 
   #username {
@@ -86,4 +85,10 @@
     }
   }
 
+}
+
+.notLoggedIn {
+  height: calc(100vh - 137.8px);
+  background-image: url('./assets/hero.jpg');
+  background-size: cover;
 }
